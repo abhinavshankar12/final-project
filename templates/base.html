@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Movie Catalog{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div>
+                <a href="{% url 'home' %}">Movie Catalog</a>
+            </div>
+            <div>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'my_rentals' %}">My Rentals</a>
+                    <a href="{% url 'logout' %}">Logout ({{ user.username }})</a>
+                {% else %}
+                    <a href="{% url 'login' %}">Login</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    
+    {% load static %}
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html> 

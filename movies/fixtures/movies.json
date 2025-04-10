@@ -1,0 +1,142 @@
+[
+  {
+    "model": "movies.movie",
+    "pk": 1,
+    "fields": {
+      "title": "The Shawshank Redemption",
+      "genre": "Drama",
+      "release_year": 1994,
+      "rating": 9.3,
+      "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+      "cast": "Tim Robbins, Morgan Freeman, Bob Gunton",
+      "poster": "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg",
+      "trailer": "https://www.youtube.com/embed/6hB3S9bIaco"
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 2,
+    "fields": {
+      "title": "The Godfather",
+      "genre": "Crime, Drama",
+      "release_year": 1972,
+      "rating": 9.2,
+      "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+      "cast": "Marlon Brando, Al Pacino, James Caan",
+      "poster": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+      "trailer": "https://www.youtube.com/embed/sY1S34973zA"
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 3,
+    "fields": {
+      "title": "The Dark Knight",
+      "genre": "Action, Crime, Drama",
+      "release_year": 2008,
+      "rating": 9.0,
+      "description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+      "cast": "Christian Bale, Heath Ledger, Aaron Eckhart",
+      "poster": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg",
+      "trailer": "https://www.youtube.com/embed/EXeTwQWrcwY"
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 4,
+    "fields": {
+      "title": "Pulp Fiction",
+      "genre": "Crime, Drama",
+      "release_year": 1994,
+      "rating": 8.9,
+      "description": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+      "cast": "John Travolta, Uma Thurman, Samuel L. Jackson",
+      "poster": "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+      "trailer": "https://www.youtube.com/embed/s7EdQ4FqbhY"
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 5,
+    "fields": {
+      "title": "Inception",
+      "genre": "Action, Adventure, Sci-Fi",
+      "release_year": 2010,
+      "rating": 8.8,
+      "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+      "cast": "Leonardo DiCaprio, Joseph Gordon-Levitt, Ellen Page",
+      "poster": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg",
+      "trailer": "https://www.youtube.com/embed/YoHD9XEInc0"
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 6,
+    "fields": {
+      "title": "Forrest Gump",
+      "genre": "Drama, Romance",
+      "release_year": 1994,
+      "rating": 8.8,
+      "description": "The presidencies of Kennedy and Johnson, the events of Vietnam, Watergate, and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.",
+      "cast": "Tom Hanks, Robin Wright, Gary Sinise",
+      "poster": "https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg",
+      "trailer": "https://www.youtube.com/embed/bLvqoHBptjg"
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 7,
+    "fields": {
+      "title": "The Matrix",
+      "genre": "Action, Sci-Fi",
+      "release_year": 1999,
+      "rating": 8.7,
+      "description": "When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence.",
+      "cast": "Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss",
+      "poster": "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg",
+      "trailer": "https://www.youtube.com/embed/vKQi3bBA1y8"
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 8,
+    "fields": {
+      "title": "Parasite",
+      "genre": "Drama, Thriller",
+      "release_year": 2019,
+      "rating": 8.5,
+      "description": "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
+      "cast": "Song Kang-ho, Lee Sun-kyun, Cho Yeo-jeong",
+      "poster": "https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZjItOTQ0My00NzYyLTk5ZWEtNzMyZjFlYjRkNWJkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg",
+      "trailer": "https://www.youtube.com/embed/5xH0HfJHsaY"
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 9,
+    "fields": {
+      "title": "Avengers: Endgame",
+      "genre": "Action, Adventure, Sci-Fi",
+      "release_year": 2019,
+      "rating": 8.4,
+      "description": "After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",
+      "cast": "Robert Downey Jr., Chris Evans, Mark Ruffalo",
+      "poster": "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_.jpg",
+      "trailer": "https://www.youtube.com/embed/TcMBFSGVi1c"
+    }
+  },
+  {
+    "model": "movies.movie",
+    "pk": 10,
+    "fields": {
+      "title": "Joker",
+      "genre": "Crime, Drama, Thriller",
+      "release_year": 2019,
+      "rating": 8.4,
+      "description": "In Gotham City, mentally troubled comedian Arthur Fleck is disregarded and mistreated by society. He then embarks on a downward spiral of revolution and bloody crime. This path brings him face-to-face with his alter-ego: the Joker.",
+      "cast": "Joaquin Phoenix, Robert De Niro, Zazie Beetz",
+      "poster": "https://m.media-amazon.com/images/M/MV5BNGVjNWI4ZGUtNzE0MS00YTJmLWE0ZDctN2ZiYTk2YmI3NTYyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg",
+      "trailer": "https://www.youtube.com/embed/zAGVQLHvwOY"
+    }
+  }
+] 

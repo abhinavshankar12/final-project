@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ movie.title }}{% endblock %}
+
+{% block content %}
+    <div class="movie-detail-container">
+        <!-- Movie Poster -->
+        <div class="movie-poster-container">
+            <img src="{{ movie.poster }}" alt="{{ movie.title }}">
+            
+            <!-- Rent/Return Button -->
+            <div style="margin-top: 20px; text-align: center;">
+                {% if user.is_authenticated %}
+                    {% if is_rented_by_user %}
+                        <a href="{% url 'return_movie' movie.id %}" class="btn form-button">Return Movie</a>
+                    {% elif is_rented %}
+                        <button class="btn form-button" disabled>Currently Rented</button>
+                    {% else %}
+                        <a href="{% url 'rent_movie' movie.id %}" class="btn form-button">Rent Movie</a>
+                    {% endif %}
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn form-button">Login to Rent</a>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Movie Details -->
+        <div class="movie-details">
+            <h1 class="movie-title-detail">{{ movie.title }}</h1>
+            <div class="movie-metadata">
+                <span>{{ movie.genre }}</span> | 
+                <span>{{ movie.release_year }}</span> | 
+                <span>Rating: {{ movie.rating }}/10</span>
+            </div>
+            
+            <h3>Description</h3>
+            <p>{{ movie.description }}</p>
+            
+            <h3>Cast</h3>
+            <p>{{ movie.cast }}</p>
+            
+            {% if movie.trailer %}
+                <h3>Trailer</h3>
+                <div class="trailer-container">
+                    <iframe 
+                        src="{{ movie.trailer }}" 
+                        title="{{ movie.title }} Trailer" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %} 

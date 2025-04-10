@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block title %}Movie Catalog - Home{% endblock %}
+
+{% block content %}
+    <!-- Search and Filter Section -->
+    <div class="search-container">
+        <form method="GET" action="{% url 'home' %}" class="search-form">
+            <div>
+                <input type="text" name="search" placeholder="Search by title" value="{{ search_query }}" class="form-control">
+            </div>
+            <div>
+                <button type="submit" class="btn">Search</button>
+            </div>
+        </form>
+    </div>
+    
+    <!-- Top Rated Movies Section -->
+    {% if not search_query and not selected_genre and not selected_year and not selected_rating %}
+        <div class="section">
+            <h2 class="section-title">Top Rated Movies</h2>
+            <div class="movies-container">
+                {% for movie in top_rated|slice:":5" %}
+                    <div class="movie-card">
+                        <a href="{% url 'movie_detail' movie.id %}">
+                            <img src="{{ movie.poster }}" alt="{{ movie.title }}" class="movie-poster">
+                        </a>
+                        <div class="movie-info">
+                            <div class="movie-title">
+                                <a href="{% url 'movie_detail' movie.id %}" 
+                                   onmouseover="showPoster(document.getElementById('poster-preview-{{ movie.id }}'), '{{ movie.poster }}')" 
+                                   onmouseout="hidePoster(document.getElementById('poster-preview-{{ movie.id }}'))">
+                                    {{ movie.title }}
+                                </a>
+                                <div id="poster-preview-{{ movie.id }}"></div>
+                            </div>
+                            <div>{{ movie.genre }}</div>
+                            <div>{{ movie.release_year }}</div>
+                            <div>Rating: {{ movie.rating }}</div>
+                            {% if user.is_authenticated %}
+                                {% if movie.id in rented_movies %}
+                                    <a href="{% url 'movie_detail' movie.id %}" class="btn">Rented</a>
+                                {% else %}
+                                    <a href="{% url 'rent_movie' movie.id %}" class="btn">Rent</a>
+                                {% endif %}
+                            {% else %}
+                                <a href="{% url 'login' %}" class="btn">Login to Rent</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+    
+    <!-- All Movies or Filtered Results -->
+    <div class="section">
+        <h2 class="section-title">
+            {% if search_query or selected_genre or selected_year or selected_rating %}
+                Search Results
+            {% else %}
+                All Movies
+            {% endif %}
+        </h2>
+        
+        {% if movies %}
+            <div class="movies-container">
+                {% for movie in movies %}
+                    <div class="movie-card">
+                        <a href="{% url 'movie_detail' movie.id %}">
+                            <img src="{{ movie.poster }}" alt="{{ movie.title }}" class="movie-poster">
+                        </a>
+                        <div class="movie-info">
+                            <div class="movie-title">
+                                <a href="{% url 'movie_detail' movie.id %}" 
+                                   onmouseover="showPoster(document.getElementById('poster-preview-all-{{ movie.id }}'), '{{ movie.poster }}')" 
+                                   onmouseout="hidePoster(document.getElementById('poster-preview-all-{{ movie.id }}'))">
+                                    {{ movie.title }}
+                                </a>
+                                <div id="poster-preview-all-{{ movie.id }}"></div>
+                            </div>
+                            <div>{{ movie.genre }}</div>
+                            <div>{{ movie.release_year }}</div>
+                            <div>Rating: {{ movie.rating }}</div>
+                            {% if user.is_authenticated %}
+                                {% if movie.id in rented_movies %}
+                                    <a href="{% url 'movie_detail' movie.id %}" class="btn">Rented</a>
+                                {% else %}
+                                    <a href="{% url 'rent_movie' movie.id %}" class="btn">Rent</a>
+                                {% endif %}
+                            {% else %}
+                                <a href="{% url 'login' %}" class="btn">Login to Rent</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No movies found matching your criteria.</p>
+        {% endif %}
+    </div>
+{% endblock %} 
