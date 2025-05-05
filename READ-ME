@@ -1,1 +1,16 @@
 #Final Project for IS601
+
+# Movie Catalog Application
+
+A Django-based web application for browsing, searching, and renting movies.
+
+## Features
+
+- Browse movies with poster images, titles, genres, release years, and ratings
+- Search for movies by title
+- Filter movies by genre, release year, and rating
+- Sort movies by rating, release year, or alphabetically
+- View movie details including description, cast, and trailer
+- User authentication
+- Rent and return movies
+- Keep track of your rented movies

@@ -4,11 +4,9 @@
 
 {% block content %}
     <div class="movie-detail-container">
-        <!-- Movie Poster -->
         <div class="movie-poster-container">
             <img src="{{ movie.poster }}" alt="{{ movie.title }}">
             
-            <!-- Rent/Return Button -->
             <div style="margin-top: 20px; text-align: center;">
                 {% if user.is_authenticated %}
                     {% if is_rented_by_user %}
@@ -16,7 +14,8 @@
                     {% elif is_rented %}
                         <button class="btn form-button" disabled>Currently Rented</button>
                     {% else %}
-                        <a href="{% url 'rent_movie' movie.id %}" class="btn form-button">Rent Movie</a>
+                        <a href="{% url 'rent_movie' movie.id %}" class="btn form-button">Rent Now</a>
+                        <a href="{% url 'add_to_cart' movie.id %}" class="btn form-button" style="margin-top: 10px; background-color: #4CAF50;">Add to Cart</a>
                     {% endif %}
                 {% else %}
                     <a href="{% url 'login' %}" class="btn form-button">Login to Rent</a>
@@ -24,7 +23,6 @@
             </div>
         </div>
         
-        <!-- Movie Details -->
         <div class="movie-details">
             <h1 class="movie-title-detail">{{ movie.title }}</h1>
             <div class="movie-metadata">

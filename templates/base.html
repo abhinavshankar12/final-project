@@ -6,8 +6,10 @@
     <title>{% block title %}Movie Catalog{% endblock %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <!-- maybe add bootstrap later??? -->
 </head>
 <body>
+    <!-- navigation bar at top -->
     <nav class="navbar">
         <div class="container">
             <div>
@@ -15,17 +17,21 @@
             </div>
             <div>
                 {% if user.is_authenticated %}
+                    <a href="{% url 'view_cart' %}">Cart</a>
                     <a href="{% url 'my_rentals' %}">My Rentals</a>
                     <a href="{% url 'logout' %}">Logout ({{ user.username }})</a>
                 {% else %}
                     <a href="{% url 'login' %}">Login</a>
+                    <a href="{% url 'register' %}">Register</a>
                 {% endif %}
             </div>
         </div>
     </nav>
     
+    <!-- main content -->
     <div class="container">
         {% block content %}
+        <!-- content from child templates -->
         {% endblock %}
     </div>
     

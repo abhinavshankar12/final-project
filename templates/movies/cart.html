@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %}Your Rental Cart{% endblock %}
+
+{% block content %}
+<div class="section">
+    <h2 class="section-title">Your Rental Cart</h2>
+    
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="{% if message.tags %}{{ message.tags }}{% endif %} message">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    {% if cart_items %}
+        <div class="movies-container">
+            {% for item in cart_items %}
+                <div class="movie-card">
+                    <a href="{% url 'movie_detail' item.movie.id %}">
+                        <img src="{{ item.movie.poster }}" alt="{{ item.movie.title }}" class="movie-poster">
+                    </a>
+                    <div class="movie-info">
+                        <div class="movie-title">
+                            <a href="{% url 'movie_detail' item.movie.id %}">
+                                {{ item.movie.title }}
+                            </a>
+                        </div>
+                        <div>{{ item.movie.genre }}</div>
+                        <div>{{ item.movie.release_year }}</div>
+                        <div>Rating: {{ item.movie.rating }}</div>
+                        <div>Added: {{ item.added_at|date:"M d, Y" }}</div>
+                        <form method="post" action="{% url 'remove_from_cart' item.movie.id %}" class="remove-form">
+                            {% csrf_token %}
+                            <button type="submit" class="btn">Remove</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        
+        <div class="cart-actions">
+            <form method="post" action="{% url 'checkout_cart' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn">Checkout and Rent All Movies</button>
+            </form>
+            <a href="{% url 'home' %}" class="btn">Continue Browsing</a>
+        </div>
+    {% else %}
+        <p>Your cart is empty.</p>
+        <p><a href="{% url 'home' %}" class="btn">Browse Movies</a></p>
+    {% endif %}
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const removeForms = document.querySelectorAll('.remove-form');
+    
+    removeForms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRFToken': form.querySelector('[name=csrfmiddlewaretoken]').value
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    form.closest('.movie-card').remove();
+                    if (document.querySelectorAll('.movie-card').length === 0) {
+                        window.location.reload();
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                window.location.reload();
+            });
+        });
+    });
+});
+</script>
+{% endblock %} 
